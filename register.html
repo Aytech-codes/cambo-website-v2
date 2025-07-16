@@ -243,20 +243,12 @@
       display: flex;
       align-items: center;
     }
-    .quotes-grid .quote-box:nth-child(3) {
-      grid-column: 1 / span 2;
-      justify-self: center;
-      width: 70%;
-    }
     @media (max-width: 900px) {
       .quotes-grid {
         grid-template-columns: 1fr;
         grid-template-rows: auto auto auto;
         gap: 1.2rem;
         padding: 0;
-      }
-      .quotes-grid .quote-box:nth-child(3) {
-        width: 100%;
       }
       .quote-box {
         flex-direction: column;
@@ -265,11 +257,41 @@
       }
       .quote-box img {
         width: 100%;
-        height: 160px;
-        border-radius: 0;
+        height: 200px;
+        border-radius: 12px 12px 0 0;
+        object-fit: cover;
+        object-position: 50% 40%;
       }
       .quote-text {
         padding: 1rem 0.7rem;
+      }
+    }
+    @media (max-width: 600px) {
+      .quote-box img {
+        height: 180px;
+        object-position: 50% 35%;
+      }
+    }
+    @media (max-width: 480px) {
+      .quote-box img {
+        height: 160px;
+        object-position: 50% 30%;
+      }
+    }
+    /* Target only the second quote box (Khabib) */
+    @media (max-width: 900px) {
+      .quotes-grid .quote-box:nth-child(2) img {
+        object-position: 50% 15%;
+      }
+    }
+    @media (max-width: 600px) {
+      .quotes-grid .quote-box:nth-child(2) img {
+        object-position: 50% 10%;
+      }
+    }
+    @media (max-width: 480px) {
+      .quotes-grid .quote-box:nth-child(2) img {
+        object-position: 50% 5%;
       }
     }
     .register-heading {
@@ -301,6 +323,67 @@
       -webkit-background-clip: unset;
       -webkit-text-fill-color: unset;
       z-index: 2;
+    }
+    /* Fighter images in carousel - make them larger and more visible */
+    .fighter-card {
+      margin: 1rem;
+      text-align: center;
+    }
+    .fighter-img {
+      width: 220px;
+      height: 270px;
+      object-fit: cover;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(37, 99, 235, 0.2);
+      border: 3px solid var(--accent);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .fighter-img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 30px rgba(37, 99, 235, 0.3);
+    }
+    .fighter-name {
+      font-weight: bold;
+      font-size: 1.1rem;
+      margin-top: 0.5rem;
+      color: var(--accent);
+    }
+    /* Responsive fighter images */
+    @media (max-width: 768px) {
+      .fighter-img {
+        width: 200px;
+        height: 240px;
+      }
+    }
+    @media (max-width: 480px) {
+      .fighter-img {
+        width: 170px;
+        height: 200px;
+      }
+    }
+    @media (max-width: 360px) {
+      .fighter-img {
+        width: 140px;
+        height: 170px;
+      }
+    }
+    
+    /* Responsive footer reordering - logo after socials on mobile */
+    @media (max-width: 768px) {
+      .footer-flex {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+      .footer-logo {
+        order: 2;
+      }
+      .footer-socials {
+        order: 1;
+      }
+      .footer-copyright {
+        order: 3;
+      }
     }
 
   </style>
