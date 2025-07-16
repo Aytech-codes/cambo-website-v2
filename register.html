@@ -6,38 +6,58 @@
   <title>Combat Sambo Registration</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Roboto&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="Images/favicon.png">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    body {
-      background: linear-gradient(to bottom right, #0c1834, #0d1111);
-      color: #fff;
-      font-family: 'Roboto', sans-serif;
-      margin: 0;
-      padding: 0;
+    /* Only custom layout/spacing styles below. All color/background comes from style.css */
+    .nav-header {
+      position: relative;
+      background: var(--secondary-bg);
+      box-shadow: 0 2px 12px #2563eb08;
+      padding: 1rem 0;
     }
-    h2, h3 {
-      font-family: 'Orbitron', sans-serif;
-      text-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
     }
-    .register-header {
+    .nav-logo img {
+      height: 48px;
+      width: auto;
+    }
+    .nav-content {
       text-align: center;
-      margin-top: 2rem;
+      flex: 1;
     }
-    .register-header .cta-button {
+    .register-intro {
+      text-align: center;
+      margin: 2rem 0;
+      padding: 0 1rem;
+    }
+    .register-intro p {
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+      color: var(--text-muted);
+    }
+    .register-intro .cta-button {
       margin-top: 1rem;
     }
-    
     .cta-button a {
-      background-color: #0ff;
-      color: #000;
+      background: var(--accent);
+      color: #fff;
       padding: 0.5rem 1.5rem;
-      border-radius: 5px;
+      border-radius: 32px;
       font-weight: bold;
       text-decoration: none;
       transition: background 0.3s ease;
+      border: none;
+      box-shadow: 0 2px 12px #2563eb22;
     }
     .cta-button a:hover {
-      background-color: #00cccc;
-      color: #000;
+      background: var(--accent-hover);
+      color: #fff;
     }
     .main-section {
       display: flex;
@@ -47,8 +67,6 @@
       padding: 1rem 2rem 3rem;
       gap: 2rem;
     }
-    
-    /* Responsive styles for main section */
     @media (max-width: 768px) {
       .main-section {
         flex-direction: column;
@@ -61,7 +79,6 @@
         margin-bottom: 1rem;
       }
     }
-    
     @media (max-width: 480px) {
       .main-section {
         padding: 0.5rem 0.5rem 1.5rem;
@@ -72,217 +89,111 @@
       }
     }
     .register-box {
-      background-color: rgba(29, 34, 56, 0.95);
+      background: var(--card-bg);
       padding: 2rem;
-      border-radius: 10px;
+      border-radius: 16px;
       width: 100%;
       max-width: 400px;
-      box-shadow: 0 0 15px rgba(0, 255, 255, 0.2);
+      box-shadow: 0 0 15px #2563eb11;
       flex: 1 1 320px;
+      color: var(--text-main);
+      border: 1.5px solid var(--accent);
     }
     .register-box input,
     .register-box select,
     .register-box textarea {
       margin-bottom: 1rem;
+      background: var(--input-bg);
+      border: 1.5px solid var(--input-border);
+      color: var(--text-main);
+    }
+    .register-box input:focus,
+    .register-box select:focus,
+    .register-box textarea:focus {
+      border-color: var(--accent-hover);
+      outline: none;
+      box-shadow: 0 0 0 2px #2563eb33;
     }
     .form-check-label {
       font-weight: normal;
+      color: var(--text-main);
     }
     .image-collage {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 18px;
+      width: 100%;
+      height: auto;
+      margin: 0 auto;
       position: relative;
-      width: 320px;
-      height: 250px;
-      margin-right: 150px;
-      right: 100px;
-      top: 40px;
     }
     .image-collage img {
-      width: 180px;
-      height: 150px;
+      width: 160px;
+      height: 130px;
       object-fit: cover;
-      border-radius: 10px;
-      position: absolute;
-      box-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+      border-radius: 12px;
+      box-shadow: 0 0 10px #2563eb22;
+      border: 4px solid var(--accent);
+      position: relative;
+      margin: 0;
+      z-index: 1;
+      background: #fff;
+      transition: border-color 0.2s;
     }
-    .border-blue { border: 4px solid #00f; top: 20px; left: -70px; z-index: 1; }
-    .border-red { border: 4px solid #f00; top: 1px; right: 24px; z-index: 3; }
-    .border-white { border: 4px solid #fff; top: 135px; left: 20px; z-index: 2; }
-    .border-black { border: 4px solid #000; top: 265px; right: 210px; z-index: 5; }
-    
-    /* Responsive breakpoints - Flex layout for all devices except desktop */
+    .border-blue { border-color: var(--accent); }
+    .border-red { border-color: #e62429; }
+    .border-white { border-color: #fff; }
+    .border-black { border-color: #1e293b; }
     @media screen and (max-width: 1024px) {
-      .image-collage {
-        display: flex !important;
-        flex-wrap: wrap !important;
-        justify-content: center !important;
-        align-items: center !important;
-        gap: 15px !important;
-        width: 100% !important;
-        height: auto !important;
-        margin-right: 0 !important;
-        right: 0 !important;
-        top: 0 !important;
-        position: relative !important;
-      }
       .image-collage img {
-        position: relative !important;
-        width: 160px !important;
-        height: 130px !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        margin: 0 !important;
-      }
-      .border-blue, .border-red, .border-white, .border-black {
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        position: relative !important;
+        width: 140px;
+        height: 110px;
       }
     }
-    
     @media screen and (max-width: 480px) {
       .image-collage {
-        gap: 12px !important;
+        gap: 10px;
       }
       .image-collage img {
-        width: 140px !important;
-        height: 110px !important;
+        width: 110px;
+        height: 85px;
       }
     }
-    
     @media screen and (max-width: 360px) {
-      .image-collage {
-        gap: 8px !important;
-      }
       .image-collage img {
-        width: 120px !important;
-        height: 95px !important;
-      }
-    }
-    .age-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      margin-top: 1rem;
-    }
-    .age-links {
-      display: flex;
-      justify-content: left;
-      margin-left: 100px;
-      gap: 1rem;
-      font-weight: bold;
-      font-size: 1rem;
-      margin-bottom: 2.5rem;
-    }
-    .age-links a {
-      text-decoration: none;
-      color: #0ff;
-      padding: 0.5rem 1rem;
-      border: 2px solid #0ff;
-      border-radius: 5px;
-      transition: all 0.3s ease;
-    }
-    .age-links a:hover {
-      background-color: #0ff;
-      color: #000;
-    }
-    
-    /* Responsive styles for age links */
-    @media (max-width: 768px) {
-      .age-links {
-        margin-left: 50px !important;
-        gap: 0.8rem !important;
-      }
-      .age-links a {
-        padding: 0.4rem 0.8rem !important;
-        font-size: 0.9rem !important;
-      }
-    }
-    
-    @media (max-width: 480px) {
-      .age-links {
-        margin-left: 20px !important;
-        gap: 0.6rem !important;
-        flex-wrap: wrap !important;
-      }
-      .age-links a {
-        padding: 0.3rem 0.6rem !important;
-        font-size: 0.85rem !important;
+        width: 90px;
+        height: 70px;
       }
     }
     .quotes-section {
-      background: radial-gradient(circle at center, #111e3f, #050a1f);
+      background: var(--secondary-bg);
       padding: 3rem 1rem;
     }
     .quotes-section h2 {
-      color: white;
+      color: var(--accent);
       text-align: center;
       margin-bottom: 2rem;
-      text-shadow: 0 0 8px #f0f;
+      text-shadow: none;
     }
     .quote-box {
-      background-color: rgba(29, 29, 29, 0.9);
-      border-radius: 10px;
+      background: var(--card-bg);
+      border-radius: 16px;
       padding: 1rem;
       margin: 1rem;
       text-align: center;
-      color: #fff;
-      box-shadow: 0 0 10px rgba(255, 0, 255, 0.2);
+      color: var(--text-main);
+      box-shadow: 0 0 10px #2563eb11;
+      border: 1px solid var(--accent-muted);
     }
     .quote-box img {
       width: 100px;
       height: auto;
-      border-radius: 50%;
+      border-radius: 12px;
       margin-bottom: 1rem;
-    }
-    .register-images-collage {
-      position: relative;
-      width: 180px;
-      height: 180px;
-      margin: 0 auto;
-    }
-
-    .register-img {
-      position: absolute;
-      width: 80px;
-      height: 80px;
       object-fit: cover;
-      border-radius: 16px;
-      box-shadow: 0 4px 24px #0006;
-      background: #222;
-    }
-
-    /* First two images: side by side, top */
-    .img-blue {
-      left: 0;
-      top: 20px;
-      border: 4px solid #1ecfff;
-      z-index: 2;
-    }
-    .img-red {
-      left: 60px;
-      top: 20px;
-      border: 4px solid #ff3c3c;
-      z-index: 2;
-    }
-
-    /* Third image: centered, overlapping the first two */
-    .img-white {
-      left: 30px;
-      top: 0;
-      border: 4px solid #fff;
-      z-index: 3;
-    }
-
-    /* Fourth image: bottom, slightly overlapping others */
-    .img-black {
-      left: 40px;
-      top: 70px;
-      border: 4px solid #222;
-      z-index: 1;
+      box-shadow: 0 2px 12px #2563eb22;
     }
     .quotes-grid {
       display: grid;
@@ -296,15 +207,14 @@
       width: 100%;
       padding: 0 1rem;
     }
-
     .quote-box {
       display: flex;
       align-items: stretch;
-      background-color: rgba(29, 29, 29, 0.95);
-      border-radius: 10px;
+      background: var(--card-bg);
+      border-radius: 16px;
       padding: 0;
-      color: #fff;
-      box-shadow: 0 0 10px rgba(255, 0, 255, 0.12);
+      color: var(--text-main);
+      box-shadow: 0 0 10px #2563eb11;
       width: 100%;
       min-height: 160px;
       max-width: 600px;
@@ -312,8 +222,8 @@
       text-align: left;
       margin: 0 auto;
       overflow: hidden;
+      border: 1px solid var(--accent-muted);
     }
-
     .quote-box img {
       width: 45%;
       min-width: 120px;
@@ -325,7 +235,6 @@
       box-shadow: none;
       display: block;
     }
-
     .quote-text {
       flex: 1;
       padding: 1.2rem 1rem;
@@ -334,255 +243,94 @@
       display: flex;
       align-items: center;
     }
-
     .quotes-grid .quote-box:nth-child(3) {
       grid-column: 1 / span 2;
       justify-self: center;
       width: 70%;
     }
-     @media (max-width: 900px) {
-    .quotes-grid {
-      grid-template-columns: 1fr;
-      grid-template-rows: auto auto auto;
-      gap: 1.2rem;
-      padding: 0;
+    @media (max-width: 900px) {
+      .quotes-grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto auto;
+        gap: 1.2rem;
+        padding: 0;
+      }
+      .quotes-grid .quote-box:nth-child(3) {
+        width: 100%;
+      }
+      .quote-box {
+        flex-direction: column;
+        min-height: 0;
+        max-width: 98vw;
+      }
+      .quote-box img {
+        width: 100%;
+        height: 160px;
+        border-radius: 0;
+      }
+      .quote-text {
+        padding: 1rem 0.7rem;
+      }
     }
-    .quotes-grid .quote-box:nth-child(3) {
+    .register-heading {
+      position: relative;
+      display: inline-block;
+      font-family: 'Orbitron', 'Oswald', Arial, sans-serif;
+      font-size: 2.2rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      margin-bottom: 10px;
+    }
+    .register-heading-blue {
+      position: absolute;
+      top: 4px;
+      left: 0;
       width: 100%;
+      color: var(--accent);
+      z-index: 1;
+      filter: blur(0.5px);
+      opacity: 0.85;
+      pointer-events: none;
+      user-select: none;
     }
-    .quote-box {
-      flex-direction: column;
-      min-height: 0;
-      max-width: 98vw;
+    .register-heading-main {
+      position: relative;
+      color: var(--accent);
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+      z-index: 2;
     }
-    .quote-box img {
-      width: 100%;
-      height: 160px;
-      border-radius: 0;
-    }
-    .quote-text {
-      padding: 1rem 0.7rem;
-    }
-  }
-
-  .register-heading {
-    position: relative;
-    display: inline-block;
-    font-family: 'Orbitron', 'Oswald', Arial, sans-serif;
-    font-size: 2.2rem;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    margin-bottom: 10px;
-  }
-
-  .register-heading-blue {
-    position: absolute;
-    top: 4px;   /* vertical offset for the blue 'glow' */
-    left: 0;
-    width: 100%;
-    color: red;
-    z-index: 1;
-    filter: blur(0.5px);
-    opacity: 0.85;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  .register-heading-main {
-    position: relative;
-    color: #fff;
-    background: linear-gradient(90deg, #fff 60%, #1ecfff 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    z-index: 2;
-  }
-
-/* styles.css */
-
-body {
-  background: linear-gradient(to right, #0a132b, #07172f);
-  color: #fff;
-  font-family: 'Segoe UI', sans-serif;
-  padding: 20px;
-}
-
-h2 {
-  text-align: center;
-  margin-bottom: 2rem;
-  font-weight: bold;
-  text-shadow: 0 0 5px #0ff;
-}
-
-  .carousel-item img {
-    max-height: 400px;
-    width: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.3);
-  }
-
-  .fighter-card {
-    background: linear-gradient(135deg, #1a233a 0%, #2d3748 100%);
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    border: 2px solid #1ecfff;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    margin: 10px;
-  }
-
-  .fighter-card:hover {
-    transform: translateY(-8px);
-    box-shadow: 0 12px 40px rgba(30, 207, 255, 0.3);
-  }
-
-  .fighter-caption {
-    margin-top: 15px;
-    text-align: center;
-  }
-
-  .fighter-caption h5 {
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 5px;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  }
-
-  .fighter-caption p {
-    color: #1ecfff;
-    font-size: 0.9rem;
-    margin: 0;
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-  }
-
-.carousel-caption h5 {
-  color: #fff;
-  text-shadow: 1px 1px 5px #000;
-}
-
-.event-box {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 10px;
-  padding: 10px 15px;
-  margin: 12px auto;
-  width: 100%;
-  max-width: 550px;
-  box-shadow: 0 0 6px rgba(0, 255, 255, 0.1);
-  background: none;
-}
-
-.event-box img {
-  width: 120px;
-  height: 120px;
-  object-fit: cover;
-  border-radius: 8px;
-  background: none;
-}
-
-.event-content {
-  flex: 1;
-}
-
-.event-content h5 {
-  margin: 0 0 6px;
-  font-size: 1rem;
-  line-height: 1.3;
-}
-
-.event-content small {
-  color: #ccc;
-}
-
-.event-box button {
- background: linear-gradient(90deg, #ff3c3c, #1ecfff);
-  border: none;
-  padding: 6px 14px;
-  color: #fff;
-  font-weight: bold;
-  border-radius: 5px;
-  font-size: 0.85rem;
-  margin-top: 5px;
-  transition: 0.3s;
-}
-.event-box button:hover{
-  background: linear-gradient(90deg, #1ecfff, #ff3c3c);
-  transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 6px 32px #ff3c3c99, 0 2px 12px #1ecfff99;
-}
-
-
-.section-label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 10px;
-  margin-bottom: 10px;
-
-}
-
-.section-label h4 {
-  color: #00f6ff;
-  margin-left: 150px;
-}
-
-.section-label .past {
-  color: #ff4081;
-}
-
-.fighters-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 1rem;
-  padding-top: 20px;
-}
-.bg-danger {
-    margin-left: 2px;
-    margin-top: 10px;
-    font-size: 18px;
-
-}
-.fighters-header p {
-  display: flex;
-  flex-direction: column;
-  margin: 4px;
-  font-size: 45px;
-  margin-left: 80px;
-  font-weight: bold;
-  word-spacing: 2px;
-}
-
-.fighters-header button {
-  margin-top: 30px;
-  background-color: #555;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  border-radius: 5px;
-}
 
   </style>
 </head>
 <body>
-  <div class="register-header">
-    <h2 class="register-heading">
-      <span class="register-heading-blue">REGISTER FOR THE NEXT FIGHT</span>
-      <span class="register-heading-main">REGISTER FOR THE NEXT FIGHT</span>
-    </h2>
+  <!-- Header with Logo -->
+  <header class="nav-header">
+    <div class="container">
+      <nav class="nav">
+        <div class="nav-logo">
+          <img src="Images/Logo - Copy.PNG" alt="Combat Sambo Logo">
+        </div>
+        <div class="nav-content">
+          <h2 class="register-heading">
+            <span class="register-heading-blue">REGISTER FOR THE NEXT FIGHT</span>
+            <span class="register-heading-main">REGISTER FOR THE NEXT FIGHT</span>
+          </h2>
+        </div>
+      </nav>
+    </div>
+  </header>
+
+  <div class="register-intro">
     <p>Secure your spot in the next Combat Sambo Tournament. Fill out the form below and get ready to fight!</p>
     <div class="cta-button">
       <a href="#registration">REGISTER HERE</a>
     </div>
   </div>
 
-   <section class="main-section" id="registration">
+  <section class="main-section" id="registration">
     <form class="register-box" id="samboForm" action="https://formsubmit.co/ak.legacy.np@gmail.com" method="POST">
       <input type="hidden" name="_subject" value="New Combat Sambo Registration">
       <input class="form-control" type="text" name="name" placeholder="Enter your full name" id="name" required />
@@ -627,19 +375,19 @@ h2 {
     <h2>Words from Combat Sambo Champions</h2>
     <div class="quotes-grid">
       <div class="quote-box">
-        <img src="Images/UFC Professional MMA Red Sparring Gloves.jpeg" alt="Fedor" />
+        <img src="Images/Champion Fedor!.jpeg" alt="Fedor" />
         <div class="quote-text">
           <p>"The biggest mistake you can make is to think that combat is just a sport. In Combat Sambo, we train for real fights."<br /><strong>— Fedor Emelianenko</strong></p>
         </div>
       </div>
       <div class="quote-box">
-        <img src="Images/Boon Retro Muay Thai Shorts - Nak Muay Wholesale.jpeg" alt="Khabib" />
+        <img src="Images/— Khabib Nurmagomedov.jpeg" alt="Khabib" />
         <div class="quote-text">
           <p>"In sambo, you learn how to control your opponent everywhere – standing or on the ground. That’s why it’s the best foundation for a real fight."<br /><strong>— Khabib Nurmagomedov</strong></p>
         </div>
       </div>
       <div class="quote-box">
-        <img src="Images/Fairtex Traditional Muay Thai Shin Guards X-Large Blue, Size_XL.jpeg" alt="Andrei" />
+        <img src="Images/Andrei Arlovski.jpeg" alt="Andrei" />
         <div class="quote-text">
           <p>"Combat Sambo gave me the tools to dominate in MMA. Striking, takedowns, and submissions – all in one system."<br /><strong>— Andrei Arlovski</strong></p>
         </div>
@@ -647,89 +395,163 @@ h2 {
     </div>
   </section>
 
-<div class="fighters-header" id="fighters">
-  <p>Fighters <span class="badge bg-danger">Sambo Champions</span></p>
-  <button id="scrollToCarouselBtn">VIEW FIGHTERS</button>
+<!-- Fighters Carousel Section -->
+<div class="view-fighters-section">
+  <div class="container">
+    <h2 class="section-title" id="fighters" style="margin: 48px 0 36px 0; font-size:2.7rem; text-align:center; font-weight:900; letter-spacing:1.5px; color:var(--accent); text-shadow:0 2px 12px #2563eb22, 0 1px 0 #fff;">
+      Fighters <span style="color:#e62429; font-weight:900; text-shadow:0 2px 12px #e6242922, 0 1px 0 #fff;">Sambo Champions</span>
+    </h2>
+    <div id="fighterCarousel" class="carousel slide" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="d-flex justify-content-center gap-4 flex-wrap text-center">
+            <div class="fighter-card">
+              <img src="Images/No Ritmo do Ringue.jpeg" alt="Fighter 1" class="fighter-img">
+              <div class="fighter-name">Vladislav Chubenko</div>
+              <div>Lightweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Sparring.jpeg" alt="Fighter 2" class="fighter-img">
+              <div class="fighter-name">Volodimir Golovan</div>
+              <div>Welterweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Ernest-removebg-preview.png" alt="Fighter 3" class="fighter-img">
+              <div class="fighter-name">Ernest Arakelian</div>
+              <div>Middleweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Lutadores_Lutas_PNG_Transparente-removebg-preview.png" alt="Fighter 4" class="fighter-img">
+              <div class="fighter-name">Marko Ivanov</div>
+              <div>Heavyweight Champion</div>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2
+        <div class="carousel-item">
+          <div class="d-flex justify-content-center gap-4 flex-wrap text-center">
+            <div class="fighter-card">
+              <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg" alt="Fighter 5" class="fighter-img">
+              <div class="fighter-name">Georgi Petrov</div>
+              <div>Featherweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg" alt="Fighter 6" class="fighter-img">
+              <div class="fighter-name">Tigran Arshakyan</div>
+              <div>Bantamweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg" alt="Fighter 7" class="fighter-img">
+              <div class="fighter-name">Zubair Nurmagomedov</div>
+              <div>Flyweight Champion</div>
+            </div>
+            <div class="fighter-card">
+              <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg" alt="Fighter 8" class="fighter-img">
+              <div class="fighter-name">Ivan Draganov</div>
+              <div>Super Heavyweight Champion</div>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!-- Carousel controls -->
+    </div>
+  </div>
 </div>
 
-<div id="fighterCarousel" class="carousel slide" data-bs-ride="carousel">
-  <div class="carousel-inner">
-    <!-- Slide 1 -->
-    <div class="carousel-item active">
-      <div class="d-flex justify-content-center gap-4 flex-wrap text-center">
-        <div class="fighter-card">
-          <img src="Images/Luta Pirez VS Gomes Social Media PSD Editável.jpeg" alt="Fighter 1" class="rounded">
-          <div class="fighter-caption">
-            <h5>Vladislav Chubenko</h5>
-            <p>Lightweight Champion</p>
+<!-- Events Section (Tabbed) -->
+<section class="events-section">
+  <div class="container">
+    <h2 class="section-title">Combat Sambo Events</h2>
+    <ul class="nav nav-tabs mb-4" id="eventsTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <button class="nav-link active" id="upcoming-tab" data-bs-toggle="tab" data-bs-target="#upcoming" type="button" role="tab" aria-controls="upcoming" aria-selected="true">Upcoming Events</button>
+      </li>
+      <li class="nav-item" role="presentation">
+        <button class="nav-link" id="past-tab" data-bs-toggle="tab" data-bs-target="#past" type="button" role="tab" aria-controls="past" aria-selected="false">Past Events</button>
+      </li>
+    </ul>
+    <div class="tab-content" id="eventsTabContent">
+      <div class="tab-pane fade show active" id="upcoming" role="tabpanel" aria-labelledby="upcoming-tab">
+        <div class="events-grid">
+          <div class="event-card">
+            <img src="Images/Upcoming Events.jpg" alt="Event 1" class="fighter-img border-blue">
+            <div class="event-title">
+              <a href="https://sambo.sport/en/news/chempionat-kazakhstana-po-plyazhnomu-sambo-vpervye-proshyel-na-beregu-kaspiyskogo-morya/" target="_blank"><!-- TODO: Put your link here -->Beach SAMBO Championship Held on the Caspian Coast in Kazakhstan</a>
+            </div>
+            <div class="event-date">12 June, 2025</div>
+          </div>
+          <div class="event-card">
+            <img src="Images/Upcoming Events 2.jpg" alt="Event 2" class="fighter-img border-red">
+            <div class="event-title">
+              <a href="https://sambo.sport/en/news/molodezhnoe-sambo-v-kazakhstane-aktau-prinyal-masshtabnyy-chempionat/" target="_blank"><!-- TODO: Put your link here -->Youth and Junior SAMBO in Kazakhstan: Aktau Hosts Major National Championships</a>
+            </div>
+            <div class="event-date">6 June, 2025</div>
+          </div>
+          <div class="event-card">
+            <img src="Images/Upcoming Events 3.jpg" alt="Event 3" class="fighter-img border-black">
+            <div class="event-title">
+              <a href="https://sambo.sport/en/news/otkrytyy-chempionat-germanii-po-sambo-2025-vazhnyy-shag-na-puti-k-vsemirnym-igram-2029-v-karlsrue/" target="_blank"><!-- TODO: Put your link here -->German Open SAMBO 2025: A Pivotal Step Toward the World Games 2029 in Karlsruhe</a>
+            </div>
+            <div class="event-date">22 May 2025</div>
           </div>
         </div>
-        <div class="fighter-card">
-          <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg" alt="Fighter 2" class="rounded">
-          <div class="fighter-caption">
-            <h5>Volodimir Golovan</h5>
-            <p>Welterweight Champion</p>
-          </div>
-        </div>
-        <div class="fighter-card">
-          <img src="Images/Boxing Sports Event Creative Bold Flyer.jpeg" alt="Fighter 3" class="rounded">
-          <div class="fighter-caption">
-            <h5>Ernest Arakelian</h5>
-            <p>Middleweight Champion</p>
-          </div>
-        </div>
-        <div class="fighter-card">
-          <img src="Images/Joshiro Maruyama’s recent uchi-mata.jpeg" alt="Fighter 4" class="rounded">
-          <div class="fighter-caption">
-            <h5>Marko Ivanov</h5>
-            <p>Heavyweight Champion</p>
-          </div>
+        <!-- Show more events button -->
+        <div style="text-align:center; margin-top: 1.5em;">
+          <a href="https://sambo.sport/en/search/index.php?q=Upcoming+Events" class="event-btn" target="_blank"><!-- TODO: Put your link here -->Show more events</a>
         </div>
       </div>
-    </div>
-    <!-- Slide 2 -->
-    <div class="carousel-item">
-      <div class="d-flex justify-content-center gap-4 flex-wrap text-center">
-        <div class="fighter-card">
-         <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Fighter 5" class="rounded">
-          <div class="fighter-caption">
-            <h5>Georgi Petrov</h5>
-            <p>Featherweight Champion</p>
+      <div class="tab-pane fade" id="past" role="tabpanel" aria-labelledby="past-tab">
+        <div class="events-grid">
+          <div class="event-card">
+            <img src="Images/Past Events.jpg" alt="Past Event 1" class="fighter-img border-blue">
+            <div class="event-title">
+              <a href="https://sambo.sport/en/news/v-khelsinki-proshyel-pervyy-otkrytyy-chempionat-finlyandii-po-sambo/" target="_blank">The First Open Finnish SAMBO Championships Held in Helsinki</a>
+            </div>
+            <div class="event-date">12 May 2025</div>
+          </div>
+          <div class="event-card">
+            <img src="Images/3018bb78e682d0a6bd2affed89868b85.jpg" alt="Past Event 2" class="fighter-img border-red">
+            <div class="event-title">
+              <a href="https://sambo.sport/en/news/otkrytyy-chempionat-i-mezhdunarodnyy-seminar-trenerov-po-sambo-proshel-v-niderlandakh/" target="_blank">Open Championship and International Seminar for SAMBO Coaches Held in the Netherlands
+              </a>
+            </div>
+            <div class="event-date">14 March 2023</div>
+          </div>
+          <div class="event-card">
+            <img src="Images/Past Event 3.jpg" alt="Past Event 3" class="fighter-img border-black">
+            <div class="event-title">
+              <a href="#" target="_blank">Youth and Junior SAMBO Cup of Ukraine was held in Karolino-Bugaz</a>
+            </div>
+            <div class="event-date">7 September 2020</div>
           </div>
         </div>
-        <div class="fighter-card">
-         <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Fighter 6" class="rounded">
-          <div class="fighter-caption">
-            <h5>Tigran Arshakyan</h5>
-            <p>Bantamweight Champion</p>
-          </div>
-        </div>
-        <div class="fighter-card">
-         <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Fighter 7" class="rounded">
-          <div class="fighter-caption">
-            <h5>Zubair Nurmagomedov</h5>
-            <p>Flyweight Champion</p>
-          </div>
-        </div>
-        <div class="fighter-card">
-          <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Fighter 8" class="rounded">
-          <div class="fighter-caption">
-            <h5>Ivan Draganov</h5>
-            <p>Super Heavyweight Champion</p>
-          </div>
+        <!-- Show more events button for Past Events -->
+        <div style="text-align:center; margin-top: 1.5em;">
+          <a href="#" class="event-btn" target="_blank"><!-- TODO: Put your link here -->Show more events</a>
         </div>
       </div>
     </div>
   </div>
-  <!-- Carousel controls -->
-  <button class="carousel-control-prev" type="button" data-bs-target="#fighterCarousel" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon"></span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#fighterCarousel" data-bs-slide="next">
-    <span class="carousel-control-next-icon"></span>
-  </button>
-</div>
+</section>
 
+<!-- Footer -->
+<footer class="site-footer" id="connect">
+  <div class="container footer-flex">
+    <div class="footer-logo">
+      <img src="Images/Logo - Copy.PNG" alt="Combat Sambo Logo">
+    </div>
+  <div class="footer-socials">
+    <a href="#" aria-label="X / Twitter"><i class="fa-brands fa-x-twitter"></i></a>
+    <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook"></i></a>
+  </div>
+  <div class="footer-copyright">
+      © 2024 Combat Sambo League. All rights reserved.
+    </div>
+  </div>
+</footer>
 <script>
 // Scroll to carousel when button is clicked
   document.getElementById('scrollToCarouselBtn').addEventListener('click', function() {
@@ -740,105 +562,7 @@ h2 {
   });
 </script>
 
-  <h2 class="mt-5" id="Events">Combat Sambo Events</h2>
-
-  <div class="row">
-    <div class="col-md-6">
-      <div class="section-label">
-        <h4>Upcoming Events</h4>
-      </div>
-              <div class="event-box">
-        <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Event 1">
-        <h5>Atlanta, GA, USA<br><small>April 15th, 2025</small></h5>
-        <button onclick="scrollToRegistration()">Register Now</button>
-      </div>
-      <div class="event-box">
-        <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Event 2">
-        <h5>Armenia, Yerevan<br><small>June 15th, 2025</small></h5>
-        <button onclick="scrollToRegistration()">Register Now</button>
-      </div>
-      <div class="event-box">
-        <img src="Images/Boxing & Fighter Poster Design Collection _ High-Impact Visuals.jpeg"  alt="Event 3">
-        <h5>Turkmenistan, Ashgabat<br><small>November 20th, 2025</small></h5>
-        <button onclick="scrollToRegistration()">Register Now</button>
-      </div>
-    </div>
-    <div class="col-md-6">
-      <div class="section-label">
-        <h4 class="past">Past Events</h4>
-      </div>
-      <div class="event-box" style="justify-content:center; text-align:center; display:flex;">
-        <a href="https://sambo.sport/en/news/?rubric=925" target="_blank" rel="noopener">
-          <button style="background: linear-gradient(90deg, #ff3c3c, #1ecfff); border: none; padding: 10px 32px; color: #fff; font-weight: bold; border-radius: 30px; font-size: 1.1rem; margin-top: 5px; transition: 0.3s; box-shadow: 0 4px 16px #0002;">Show Past Events</button>
-        </a>
-      </div>
-    </div>
-  </div>
-</body>
-
-<script>
-    document.getElementById('samboForm').addEventListener('submit', function(e) {
-  const name = document.getElementById('name').value.trim();
-  const email = document.getElementById('email').value.trim();
-  const age = document.getElementById('age').value;
-  
-  const beginner = document.getElementById('beginner').checked;
-  const intermediate = document.getElementById('intermediate').checked;
-  const pro = document.getElementById('pro').checked;
-
-  if (!name || !email || !age) {
-    e.preventDefault();
-    alert("Please fill in all required fields.");
-    return;
-  }
-
-  if (!beginner && !intermediate && !pro) {
-    e.preventDefault();
-    alert("Please select at least one experience level (Beginner, Intermediate, or Pro).");
-    return;
-  }
-
-  // Form is valid - let it submit to Formsubmit
-  // The form will redirect to Formsubmit's success page
-});
-
-// Function to scroll to registration form
-function scrollToRegistration() {
-  const registrationSection = document.getElementById('registration');
-  if (registrationSection) {
-    registrationSection.scrollIntoView({ 
-      behavior: 'smooth',
-      block: 'start'
-    });
-  }
-}
-  </script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-<script>
-  const fighterCarousel = new bootstrap.Carousel('#fighterCarousel', {
-    interval: 4000,
-    ride: 'carousel'
-  });
-
-  // Toggle carousel visibility when button is clicked
-  // document.getElementById('viewFightersBtn').addEventListener('click', function() {
-  //   const carousel = document.getElementById('fighterCarousel');
-  //   const button = this;
-    
-  //   if (carousel.style.display === 'none' || carousel.style.display === '') {
-  //     carousel.style.display = 'block';
-  //     button.textContent = 'HIDE FIGHTERS';
-  //     // Start the carousel
-  //     fighterCarousel.cycle();
-  //   } else {
-  //     carousel.style.display = 'none';
-  //     button.textContent = 'VIEW ALL FIGHTERS';
-  //     // Stop the carousel
-  //     fighterCarousel.pause();
-  //   }
-  // });
-</script>
-<script>
+  <script>
     document.querySelectorAll('.age-link').forEach(link => {
       link.addEventListener('click', function(e) {
         e.preventDefault();
@@ -856,4 +580,24 @@ function scrollToRegistration() {
       });
   });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+// Warn if opened as file:// instead of from a server
+if (window.location.protocol === 'file:') {
+  const warning = document.createElement('div');
+  warning.style.position = 'fixed';
+  warning.style.top = '0';
+  warning.style.left = '0';
+  warning.style.width = '100%';
+  warning.style.background = '#e62429';
+  warning.style.color = '#fff';
+  warning.style.fontWeight = 'bold';
+  warning.style.textAlign = 'center';
+  warning.style.padding = '12px 0';
+  warning.style.zIndex = '9999';
+  warning.textContent = 'Warning: Tabs and interactive features may not work when opened as a file. Please use a local server (http://localhost:...) to view this page.';
+  document.body.prepend(warning);
+}
+</script>
+</body>
 </html>
